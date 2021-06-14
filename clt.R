@@ -19,3 +19,9 @@ for (x in 1:500) {
   mean_df <- rbind(mean_df, data.frame(mean = mean(sample)))
 }
 
+# visualize distribution of 500 sample means
+ggplot(mean_df, aes(mean)) +
+  geom_histogram(binwidth=2, fill="lightgreen", color="darkgreen", alpha=0.9) +
+  ggtitle("distribution of 500 sample means")
+ggsave(filename="./output/dist_500_samples.png", plot=last_plot(), width = 20, height = 15, units='cm')
+
