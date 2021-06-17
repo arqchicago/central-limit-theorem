@@ -30,8 +30,17 @@ ggplot(mean_df, aes(mean)) +
 ggsave(filename="./output/dist_500_samples.png", plot=last_plot(), width = 20, height = 15, units='cm')
 
 
-# compare mean, standard deviation of original distribution and the distribution of sample means
+# compare mean of original distribution and the distribution of sample means
 mean_orig = round(mean(data_df[['x']]), 2)
 mean_samples_df = round(mean(mean_df[['mean']]), 2)
 print(paste0("mean (distribution of original data) = ", mean_orig))
-print(paste0("mean (distribution of 500 sample means) = ", mean_samples_df))
+print(paste0("mean (distribution of 500 sample means) (appx) = ", mean_samples_df))
+
+# compare standard deviation of original distribution and the distribution of sample means
+std_orig = round(sd(data_df[['x']]), 2)
+std_samples_df = round(sd(mean_df[['mean']]), 2)
+std_samples_appx = round(std_samples_df*sqrt(200), 2)
+print(paste0("standard deviation (distribution of original data) S = ", std_orig))
+print(paste0("standard deviation (distribution of 500 sample means) ~S/sqrt(n)= ", std_samples_df))
+print(paste0("S (appx) = ", std_samples_appx))
+
